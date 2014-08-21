@@ -59,8 +59,8 @@
         <type type="jenkins.BuildJob" extends="generic.ExecutedScript" description="Run Jenkins Job" 
                 container-type="jenkins.jenkinsServer" deployable-type="jenkins.BuildJobSpec">
 		<generate-deployable type="jenkins.BuildJobSpec" extends="generic.Resource" description="Jenkins Job run" />
-                <property name="jobName" label="Job Name" required="true"/>
-                <property name="parameters" size="large" label="Parameters to pass" required="false"/>
+        <property name="jobName" label="Job Name" required="true"/>
+        <property name="parameters" size="large" label="Parameters to pass" required="false"/>
 
 		<!-- hidden -->
         	<property name="createScript" default="jenkins/build-job" hidden="true"/>
