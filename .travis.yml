@@ -1,1 +1,12 @@
 language: java
+notifications:
+  hipchat:
+    rooms:
+      secure: UcZcNOmyANzcvlPYlb3IcplHf1qS+KNlJ9KibgARMzZ+9yaefRrs1y7+H0X6TB/bXNCd/n1CHXccegZFE0Tr9DzJvmNaLhwgoqL3MAGyr2BQQrJ6g/PiBXSsxZyCtgMp1xzLRsftvyzgP13uj5FKNuAEIMe4Wko5LG9XB6pLguA=
+deploy:
+  provider: releases
+  api_key:
+    secure: uW1dhLpDXW5+lr+rJZsxKtjscfQ8mSsKH3y56q84OVfN9lwgzH8hSY8dIDkaBKh5HwzmjYOzjm8DRNStkkTh+gC10EWu4yIyY59zH+2nm8jZyn3MXUVl1T9duI4+KdaRxf/1YWWaXrtMxvD/xLwFR3dsF1B9RsZtSgIf3ojcGfs=
+  file: build/libs/jenkins-plugin-1.0.jar
+  on:
+    repo: xebialabs-community/jenkins-plugin
