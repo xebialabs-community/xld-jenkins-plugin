@@ -1,0 +1,1 @@
+curl  http://localhost:${container.jenkinsInstallPort}/exit || echo "Jenkins already stopped"

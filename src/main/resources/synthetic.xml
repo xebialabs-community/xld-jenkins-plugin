@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<synthetic xmlns="http://www.xebialabs.com/deployit/synthetic">
+
+	<type type="jenkins.jenkinsServer" extends="generic.Container"
+		description="Jenkins server on host.">
+		<property name="jenkinsInstallDir" description="Jenkins server directory" />
+		<property name="jenkinsInstallPort" description="Port for the jenkins server" />
+
+		<property name="jenkinsUrl" label="Jenkins URL" required="false" default="http://localhost:8080" description="http url location of the Jenkins master" />
+		<property name="cliHome" label="Location cli jar" required="false" default="/opt/jenkins" description="Directory containing the jenkins-cli.jar file" />
+
+		<property name="startScript" default="jenkins/jenkins-start.sh.ftl"
+			hidden="true" />
+		<property name="stopScript" default="jenkins/jenkins-stop.sh.ftl"
+			hidden="true" />
+		<property kind="integer" name="startWaitTime" default="20" />
+
+		<method name="start" description="Start the jenkins server" />
+		<method name="stop" description="Stop the jenkins server" />
+
+	</type>
+
+	<type type="jenkins.Plugin" extends="generic.CopiedArtifact"
+		description="Jenkins Plugin" deployable-type="jenkins.pluginHpi"
+		container-type="jenkins.jenkinsServer">
+		<generate-deployable type="jenkins.pluginHpi"
+			extends="generic.File" description="jenkins plugin JAR file." />
+		<property name="targetDirectory"
+			default="${deployed.container.jenkinsInstallDir}/plugins" hidden="true" />
+		<property kind="boolean" name="restartRequired" default="true"
+			hidden="true" />
+		<property name="targetFile" default="${deployed.name}.hpi"
+			hidden="true" />
+	</type>
+
+	<type type="jenkins.Server" extends="generic.CopiedArtifact"
+		description="Jenkins server" deployable-type="jenkins.ServerWar"
+		container-type="jenkins.jenkinsServer">
+		<generate-deployable type="jenkins.ServerWar"
+			extends="generic.Folder" description="jenkins WAR file." />
+		<property name="targetDirectory" default="${deployed.container.jenkinsInstallDir}"
+			hidden="true" />
+		<property kind="boolean" name="createTargetDirectory"
+			default="true" hidden="true" />
+		<property kind="boolean" name="targetDirectoryShared"
+			default="false" hidden="true" />
+		<property kind="boolean" name="restartRequired" default="true"
+			hidden="true" />
+	</type>
+	
+
+        <type type="jenkins.BuildJob" extends="generic.ExecutedScript" description="Run Jenkins Job" 
+                container-type="jenkins.jenkinsServer" deployable-type="jenkins.BuildJobSpec">
+		<generate-deployable type="jenkins.BuildJobSpec" extends="generic.Resource" description="Jenkins Job run" />
+                <property name="jobName" label="Job Name" required="true"/>
+                <property name="parameters" size="large" label="Parameters to pass" required="false"/>
+
+		<!-- hidden -->
+        	<property name="createScript" default="jenkins/build-job" hidden="true"/>
+		<property name="createVerb" hidden="true" default="Run" />
+		<!-- DefaultOrders.POST_FLIGHT + 2-->
+		<property name="createOrder" kind="integer" hidden="true" default="102" />
+		<property name="noopScript" hidden="true" default="jenkins/build-job" />
+		<property name="noopVerb" hidden="true" default="Run" />
+		<!-- DefaultOrders.POST_FLIGHT + 2-->
+		<property name="noopOrder" kind="integer" hidden="true" default="102" />
+        </type>
+
+</synthetic>
+    
+    
