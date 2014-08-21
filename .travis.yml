@@ -8,5 +8,8 @@ deploy:
   api_key:
     secure: uW1dhLpDXW5+lr+rJZsxKtjscfQ8mSsKH3y56q84OVfN9lwgzH8hSY8dIDkaBKh5HwzmjYOzjm8DRNStkkTh+gC10EWu4yIyY59zH+2nm8jZyn3MXUVl1T9duI4+KdaRxf/1YWWaXrtMxvD/xLwFR3dsF1B9RsZtSgIf3ojcGfs=
   file: build/libs/jenkins-plugin-1.0.jar
+  skip_cleanup: true
   on:
+    all_branches: true
+    tags: true 
     repo: xebialabs-community/jenkins-plugin
