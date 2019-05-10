@@ -1,8 +1,7 @@
 language: java
 notifications:
-  hipchat:
-    rooms:
-      secure: UcZcNOmyANzcvlPYlb3IcplHf1qS+KNlJ9KibgARMzZ+9yaefRrs1y7+H0X6TB/bXNCd/n1CHXccegZFE0Tr9DzJvmNaLhwgoqL3MAGyr2BQQrJ6g/PiBXSsxZyCtgMp1xzLRsftvyzgP13uj5FKNuAEIMe4Wko5LG9XB6pLguA=
+  slack:
+    secure: mCZ+Q1KPikHGP+Z4VxkO5O+DxFElB6vwmvkVHr1y0Yg7aLFCrTaCfjBWMj1gMLURnvdIuRfF9EqBtIQT7apg48LWtxYbmEWcJgR/xzQN90fTO06EWK930QMRPdWgzqLZSb3zte46ruWrerW0VYMSFKt3I42e7AoosCMrjkQBI1k=
 deploy:
   provider: releases
   api_key:
@@ -11,5 +10,5 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-    tags: true 
+    tags: true
     repo: xebialabs-community/jenkins-plugin
