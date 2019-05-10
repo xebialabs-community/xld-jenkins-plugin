@@ -6,7 +6,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: uW1dhLpDXW5+lr+rJZsxKtjscfQ8mSsKH3y56q84OVfN9lwgzH8hSY8dIDkaBKh5HwzmjYOzjm8DRNStkkTh+gC10EWu4yIyY59zH+2nm8jZyn3MXUVl1T9duI4+KdaRxf/1YWWaXrtMxvD/xLwFR3dsF1B9RsZtSgIf3ojcGfs=
+    secure: NMBpzyIeo2dmWYK2d8Pvor2i9T5qAVeddGVLgWhBlSu29XgsjZEvkFVJ0yJ6wRnW7QD1cedR0365ciH7C4faSZ+c3CUP83e0fYy08OpNSCCYpDAzBLbHCMW6mEb1+db/m/2Jry/4R+CEVRhEjEaGd/UxwnU3nFyRcMSEed3lMOM=
   file: build/libs/jenkins-plugin-1.0.jar
   skip_cleanup: true
   on:
